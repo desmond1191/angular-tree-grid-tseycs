@@ -1,0 +1,92 @@
+div.header {
+  height: 4rem;
+  background-color: rgb(60, 60, 60);
+  position: relative;
+}
+
+div.navigator {
+  position: absolute;
+  right: 10rem;
+  top: 1.9rem;
+}
+
+div.navigator a.navigator-btn {
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+}
+
+div.navigator a.navigator-btn:hover {
+  color: gray;
+}
+
+.custom_class {
+  background-color: green;
+}
+
+div.title-header {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 35px;
+}
+
+div.body {
+  margin-top: 20px;
+}
+
+td.left-panel {
+  width: 25%;
+  vertical-align: top;
+  padding-right: 10px;
+
+  ul {
+    list-style: none;
+    padding-left: 10px;
+  }
+  
+  li {
+
+    a {
+      text-decoration: none;
+      padding: 12px 16px;
+      color: rgb(60, 64, 67);
+      display: block;
+
+      &:hover {
+        background-color: #f7f7f7;
+        cursor: pointer;
+        color: #01475b;
+      }
+
+      &.selected {
+        color: #01475b;
+        font-weight: 600;
+      }
+    }
+  }
+}
+td.content {
+  width: 60%;
+}
+
+span.donate {
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  a {
+    text-decoration: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+    div.navigator {
+        right: 0;
+    }
+
+    div.content {
+        padding: 1rem 1rem;
+    }
+}
+
