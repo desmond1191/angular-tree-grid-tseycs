@@ -26,5 +26,6 @@ export class AgeComponent extends DefaultEditor {
   }
 
   ngOnInit() {
+    console.log('row data', this.row_data, this.cell_value, this.column);
   }
 }

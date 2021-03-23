@@ -53,22 +53,22 @@ export class CustomEditorComponent {
           editable: true,
           editor: AgeComponent
         },
-        {
-          name: 'weight',
-          header: 'Weight'
-        },
-        {
-          name: 'gender',
-          header: 'Gender',
-          renderer: function(value) {
-            return value ? 'Male' : 'Female';
-          }
-        },
-        {
-          name: 'phone',
-          header: 'Phone',
-          width: '150px'
-        }
+        // {
+        //   name: 'weight',
+        //   header: 'Weight'
+        // },
+        // {
+        //   name: 'gender',
+        //   header: 'Gender',
+        //   renderer: function(value) {
+        //     return value ? 'Male' : 'Female';
+        //   }
+        // },
+        // {
+        //   name: 'phone',
+        //   header: 'Phone',
+        //   width: '150px'
+        // }
       ]
     };
 

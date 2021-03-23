@@ -24,26 +24,29 @@ import {CustomCellViewComponent} from './../Custom/CustomCellViewComponent';
 })
 export class SubgridComponent {
     data: any[] = [
-      { id: 1, name: 'Sriya', age: 26, weight: 60, gender: 1, phone: 7930343463},
-      { id: 2, name: 'Sneha', age: 23, weight: 90, gender: 1, phone: 7930343463}
+      { id: 1, name: 'Expand & Collapse', age: 26, weight: 60, gender: 1, phone: 7930343463},
+      { id: 2, name: 'Layout', age: 23, weight: 90, gender: 1, phone: 7930343463},
+      { id: 3, name: 'Expand 1111', age: 26, weight: 60, gender: 1, phone: 7930343463, parent: 2},
+      { id: 4, name: 'Layout 1111', age: 23, weight: 90, gender: 1, phone: 7930343463, parent: 2}
     ];
     subgrid_1: any = [
-      { technology_id: 1, type: 'Web', technology: 'Angular', experience: 2, parent: 1},
-      { technology_id: 2, type: 'Web', technology: 'HTML5', experience: 3, parent: 1},
-      { technology_id: 3, type: 'Web', technology: 'CSS3', experience: 2, parent: 1},
-      { technology_id: 4, type: 'Web', technology: 'Javascript', experience: 6, parent: 1},
+      { technology_id: 1, type: 'Anchors', technology: 'Input', experience: 2, parent: 3},
+      { technology_id: 2, type: 'Min Size', technology: 'Input', experience: 3, parent: 3},
+      // { technology_id: 3, type: 'Web', technology: 'CSS3', experience: 2, parent: 1},
+      // { technology_id: 4, type: 'Web', technology: 'Javascript', experience: 6, parent: 1},
     ];
 
     subgrid_2: any = [
-      { technology_id: 5, type: 'Web', technology: 'Angular', experience: 3, parent: 2},
-      { technology_id: 6, type: 'Web', technology: 'HTML5', experience: 3, parent: 2},
-      { technology_id: 7, type: 'Web', technology: 'CSS3', experience: 2, parent: 2},
-      { technology_id: 8, type: 'Web', technology: 'Javascript', experience: 8, parent: 2},
+      { technology_id: 5, type: 'Anchors', technology: 'Angular', experience: 3, parent: 3},
+      { technology_id: 6, type: 'Min Size', technology: 'HTML5', experience: 3, parent: 3},
+      { technology_id: 7, type: 'Web', technology: 'CSS3', experience: 2, parent: 3},
+      { technology_id: 8, type: 'Web', technology: 'Javascript', experience: 8, parent: 3},
     ];
 
     configs: any = {
     id_field: 'id',
-    multi_select: true,
+    multi_select: false,
+    parent_id_field: 'parent',
     parent_display_field: 'name',
     css: { // Optional
       expand_class: 'fa fa-caret-right',
@@ -55,29 +58,29 @@ export class SubgridComponent {
         header: 'Name',
         editable: true
       },
-      {
-        name: 'age',
-        header: 'Age',
-        editable: true,
-        renderer: function(value) {
-          return value + ' years';
-        }
-      },
-      {
-        name: 'weight',
-        header: 'Weight'
-      },
-      {
-        name: 'gender',
-        header: 'Gender',
-        renderer: function(value) {
-          return value ? 'Male' : 'Female';
-        }
-      },
-      {
-        name: 'phone',
-        header: 'Phone'
-      }
+      // {
+      //   name: 'age',
+      //   header: 'Age',
+      //   editable: true,
+      //   renderer: function(value) {
+      //     return value + ' years';
+      //   }
+      // },
+      // {
+      //   name: 'weight',
+      //   header: 'Weight'
+      // },
+      // {
+      //   name: 'gender',
+      //   header: 'Gender',
+      //   renderer: function(value) {
+      //     return value ? 'Male' : 'Female';
+      //   }
+      // },
+      // {
+      //   name: 'phone',
+      //   header: 'Phone'
+      // }
     ],
     subgrid: true,
     subgrid_config: {
@@ -91,40 +94,44 @@ export class SubgridComponent {
         {
           name: 'technology',
           header: 'Technology',
-          type: 'custom',
-          sortable: true,
-          component: CustomCellViewComponent,
-          summary_renderer: () => {
-            return '<b>Total:</b>';
-          }
+          // type: 'custom',
+          // sortable: true,
+          // component: CustomCellViewComponent,
+          // summary_renderer: () => {
+          //   return '<b>Total:</b>';
+          // }
         },
-        {
-          name: 'experience',
-          header: 'Experience',
-          sortable: true,
-          renderer: function(value) {
-            return value + ' years';
-          },
-          summary_renderer: (data) => {
-            return data.map(rec => rec.experience).reduce((a, b) => a + b, 0) + ' years';
-          }
-        }
+        // {
+        //   name: 'experience',
+        //   header: 'Experience',
+        //   sortable: true,
+        //   renderer: function(value) {
+        //     return value + ' years';
+        //   },
+        //   summary_renderer: (data) => {
+        //     return data.map(rec => rec.experience).reduce((a, b) => a + b, 0) + ' years';
+        //   }
+        // }
       ]
     }
     };
 
     onExpand(e) {
       const row_data = e.data;
-      if (row_data.id === 1) {
-        setTimeout(() => {
-          e.resolve(this.subgrid_1);
-        }, 2000);
+      e.resolve(this.subgrid_1);
+
+      // e.resolve([]);
+      console.log('expand', e);
+      // if (row_data.id === 1) {
+      //   setTimeout(() => {
+      //     e.resolve(this.subgrid_1);
+      //   }, 2000);
         
-      } else {
-        setTimeout(() => {
-          e.resolve(this.subgrid_2);
-        }, 2000);
-      }
+      // } else {
+      //   setTimeout(() => {
+      //     e.resolve(this.subgrid_2);
+      //   }, 2000);
+      // }
     }
 
     @ViewChild('iframe') iframe: ElementRef;
